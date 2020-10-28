@@ -3,7 +3,7 @@
 <generatorConfiguration>
     <!-- 引入配置文件 -->
     <!-- 指定数据连接驱动jar地址 -->
-    <classPathEntry location="D:\mysql-connector-java-5.1.0-bin.jar" />
+    <classPathEntry location="D:\mysql-connector-java-5.1.18.jar" />
     <!-- 一个数据库一个context -->
     <context id="test" targetRuntime="MyBatis3">
         <!-- 注释 -->
@@ -14,8 +14,8 @@
 
         <!-- jdbc连接 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/dsc" userId="root"
-                        password="root" />
+                        connectionURL="jdbc:mysql://localhost:3306/saledb" userId="root"
+                        password="001805" />
 
         <!-- 类型转换 -->
         <javaTypeResolver>
@@ -24,7 +24,7 @@
         </javaTypeResolver>
 
         <!-- 生成实体类地址 -->
-        <javaModelGenerator targetPackage="com.example.pojo"
+        <javaModelGenerator targetPackage="com.example.saleproject1028.pojo"
                             targetProject="src/main/java" >
             <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
             <property name="enableSubPackages" value="false"/>
@@ -40,7 +40,7 @@
         </sqlMapGenerator>
 
         <!-- 生成mapxml对应client，也就是接口dao -->
-        <javaClientGenerator targetPackage="com.example.mapper"
+        <javaClientGenerator targetPackage="com.example.saleproject1028.mapper"
                              targetProject="src/main/java" type="XMLMAPPER" >
             <!--是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] &ndash;&gt;-->
             <property name="enableSubPackages" value="false" />
@@ -51,9 +51,9 @@
                enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="cjb"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <table tableName="pl"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+        <table tableName="product"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="role"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+        <table tableName="sale"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>
