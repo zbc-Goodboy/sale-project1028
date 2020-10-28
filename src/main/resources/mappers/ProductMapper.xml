@@ -68,4 +68,13 @@
       quantity = #{quantity,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select  <include refid="Base_Column_List" /> from product
+  </select>
+  <select id="selectQuantityByid" resultType="int">
+    select  quantity from product where id=#{id}
+  </select>
+  <update id="updateQuantityByid" >
+    update product set quantity=#{quantity} where id=#{id}
+  </update>
 </mapper>

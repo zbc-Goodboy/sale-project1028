@@ -1,8 +1,17 @@
 package com.example.saleproject1028.mapper;
 
 import com.example.saleproject1028.pojo.Product;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ProductMapper {
+    int selectQuantityByid(@Param("id") int id);
+
+    int updateQuantityByid(@Param("quantity")int quantity,@Param("id") int id);
+
+    List<Product> selectAll();
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Product record);

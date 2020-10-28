@@ -11,6 +11,9 @@
     <result column="productname" property="productname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
+    id, price, quantity, totalPrice, saleDate, productId
+  </sql>
+  <sql id="fullBase_Column_List" >
     id, price, quantity, totalPrice, saleDate, productId,productname
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
@@ -105,7 +108,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectAll" resultMap="BaseResultMap">
-    SELECT  <include refid="Base_Column_List" />
+    SELECT  <include refid="fullBase_Column_List" />
      from sale s,product p where s.productId=p.id
      <if test="condition==1">
        ORDER BY saleDate DESC
