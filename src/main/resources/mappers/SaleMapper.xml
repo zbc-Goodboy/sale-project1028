@@ -104,4 +104,14 @@
       productId = #{productid,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT  <include refid="Base_Column_List" />
+     from sale s,product p where s.productId=p.id
+     <if test="condition==1">
+       ORDER BY saleDate DESC
+     </if>
+    <if test="condition==2">
+      ORDER BY totalPrice DESC
+    </if>
+  </select>
 </mapper>
