@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    username: root
-    password: 001805
+    username: zbc
+    password: 123456
     url: jdbc:mysql://localhost:3306/dsc
   jackson:
     date-format: yyyy-MM-dd
