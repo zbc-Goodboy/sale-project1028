@@ -15,6 +15,8 @@ public class Sale {
 
     private Long productid;
 
+    private String productname;
+
     public Long getId() {
         return id;
     }
@@ -62,4 +64,8 @@ public class Sale {
     public void setProductid(Long productid) {
         this.productid = productid;
     }
+
+    public String getProductname() { return productname; }
+
+    public void setProductname(String productname) { this.productname = productname; }
 }

@@ -1,8 +1,13 @@
 package com.example.saleproject1028.mapper;
 
 import com.example.saleproject1028.pojo.Sale;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SaleMapper {
+    List<Sale> selectAll(@Param("condition") Integer id);
+
     int deleteByPrimaryKey(Long id);
 
     int insert(Sale record);

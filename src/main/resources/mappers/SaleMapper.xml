@@ -8,9 +8,10 @@
     <result column="totalPrice" property="totalprice" jdbcType="DOUBLE" />
     <result column="saleDate" property="saledate" jdbcType="TIMESTAMP" />
     <result column="productId" property="productid" jdbcType="BIGINT" />
+    <result column="productname" property="productname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, price, quantity, totalPrice, saleDate, productId
+    id, price, quantity, totalPrice, saleDate, productId,productname
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
