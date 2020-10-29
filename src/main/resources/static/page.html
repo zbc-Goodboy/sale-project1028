@@ -41,8 +41,8 @@
             margin-left: 400px;
         }
         table{
+            width: 700px;
             margin-top: 30px;
-            width: 750px;
             text-align: center;
             line-height: 40px;
         }
@@ -52,9 +52,7 @@
         tr:nth-of-type(1){
             background-color: #A7E0E7;
         }
-        tr:last-of-type{
-            background-color: white;
-        }
+
         .op{
             text-decoration: underline;
             color: #641049;
@@ -63,19 +61,27 @@
             text-decoration: none;
             color: #641049;
         }
+        #jjj{
+            width: 30px;
+        }
+        #aud{
+            display: inline-block;
+            margin-left: 250px;
+            background-color: white;
+        }
     </style>
 </head>
 <body>
    <div id="kk">
-       <a href="#">销售</a>
-       <a href="#">销售信息查询</a>
-       <a href="#">查看库存</a>
+       <a href="add.html">销售</a>
+       <a href="page.html">销售信息查询</a>
+       <a href="add2.html">查看库存</a>
    </div>
     <div id="lk">
         <span id="pol">销售信息查询</span><div id="oui"><span>排序方式：</span><select name="fangshi"><option value="1">销售日期</option><option value="2">单笔总价</option></select><input id="lkp" type="button" value="提交"></div>
-        <table border="1">
+        <table id="jgh" border="1">
             <tr>
-                <th>ID</th>
+                <th id="jjj">ID</th>
                 <th>商品</th>
                 <th>单价</th>
                 <th>数量</th>
@@ -86,7 +92,7 @@
     </div>
 </body>
 </html>
-<script src="../templates/jquery-2.2.4.js" type="text/javascript"></script>
+<script src="jquery-2.2.4.js" type="text/javascript"></script>
 <script>
     var pageNo=1;
     var pages=0;
@@ -100,19 +106,19 @@
             pageNo=1
             f(kl,pageNo)
         })
-        $("table").on("click","#lk>span:eq(0)",function () {
+        $("body").on("click",".op:nth-of-type(1)",function () {
             pageNo=1
             f(kl,pageNo)
         })
-        $("table").on("click","#lk>span:eq(1)",function () {
+        $("body").on("click",".op:nth-of-type(2)",function () {
             pageNo=pageNo-1
             f(kl,pageNo)
         })
-        $("table").on("click","#lk>span:eq(2)",function () {
+        $("body").on("click",".op:nth-of-type(3)",function () {
             pageNo=pageNo+1
             f(kl,pageNo)
         })
-        $("table").on("click","#lk>span:eq(3)",function () {
+        $("body").on("click",".op:nth-of-type(4)",function () {
             pageNo=pages
             f(kl,pageNo)
         })
@@ -127,14 +133,15 @@
                 pages=pageinfo.pages;
                 $("tr:gt(0)").remove();
                 var data=pageinfo.list
-                var lasttr=$("<tr></tr>");
-                var lasttd=$("<td id='lk' colspan='6'></td>");
+                var lasttr=$("<tr id='aud'></tr>");
+                var lasttd=$("<td  colspan='6'></td>");
                 var span1=$("<span class='op'>首页|</span>")
                 var span2=$("<span class='op'>上一页|</span>")
                 var span3=$("<span class='op'>下一页|</span>")
                 var span4=$("<span class='op'>末页|</span>")
                 var span5=$("<span>第"+pageinfo.pageNum+"页/</span>")
-                var span6=$("<span>第"+pageinfo.pages+"页</span>")
+                var span6=$("<span>共"+pageinfo.pages+"页</span>")
+                var span7=$("<span>("+pageinfo.total+"条记录)</span>")
                 if (pageinfo.isFirstPage==true){
                     span1=$("<span >首页</span>")
                     span2=$("<span >上一页</span>")
@@ -143,7 +150,7 @@
                    span3=$("<span >下一页</span>")
                     span4=$("<span >末页</span>")
                 }
-                lasttd.append(span1).append(span2).append(span3).append(span4).append(span5).append(span6)
+                lasttd.append(span1).append(span2).append(span3).append(span4).append(span5).append(span6).append(span7)
                 lasttr.append(lasttd)
                 for (var i=0;i<data.length;i++){
                     var tr=$("<tr></tr>")
@@ -156,7 +163,7 @@
                     tr.append(td1).append(td2).append(td3).append(td4).append(td5).append(td6)
                     $("table").append(tr)
                 }
-                $("table").append(lasttr)
+                $("#lk").append(lasttr)
             }
         })
     }

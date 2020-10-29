@@ -14,12 +14,12 @@ public class ProductServiceimpl implements ProductService {
     private ProductMapper productMapper;
 
     @Override
-    public int findQuantityByid(int id) {
+    public int findQuantityByid(Long id) {
         return productMapper.selectQuantityByid(id);
     }
 
     @Override
-    public int changeQuantityByid(int quantity, int id) {
+    public int changeQuantityByid(int quantity, Long id) {
         return productMapper.updateQuantityByid(quantity,id);
     }
 

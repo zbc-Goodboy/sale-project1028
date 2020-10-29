@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ProductService {
-    int findQuantityByid(@Param("id") int id);
+    int findQuantityByid(@Param("id") Long id);
 
-    int changeQuantityByid(@Param("quantity")int quantity,@Param("id") int id);
+    int changeQuantityByid(@Param("quantity")int quantity,@Param("id") Long id);
 
     List<Product> findAll();
 

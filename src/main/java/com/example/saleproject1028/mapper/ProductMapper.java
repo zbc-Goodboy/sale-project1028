@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface ProductMapper {
-    int selectQuantityByid(@Param("id") int id);
+    int selectQuantityByid(@Param("id") Long id);
 
-    int updateQuantityByid(@Param("quantity")int quantity,@Param("id") int id);
+    int updateQuantityByid(@Param("quantity")int quantity,@Param("id") Long id);
 
     List<Product> selectAll();
 

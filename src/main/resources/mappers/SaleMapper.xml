@@ -8,13 +8,21 @@
     <result column="totalPrice" property="totalprice" jdbcType="DOUBLE" />
     <result column="saleDate" property="saledate" jdbcType="TIMESTAMP" />
     <result column="productId" property="productid" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="BaseResult" type="com.example.saleproject1028.pojo.Sale" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="totalPrice" property="totalprice" jdbcType="DOUBLE" />
+    <result column="saleDate" property="saledate" jdbcType="TIMESTAMP" />
+    <result column="productId" property="productid" jdbcType="BIGINT" />
     <result column="productname" property="productname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, price, quantity, totalPrice, saleDate, productId
   </sql>
   <sql id="fullBase_Column_List" >
-    id, price, quantity, totalPrice, saleDate, productId,productname
+    sale.id, price, sale.quantity, totalPrice, saleDate,sale.productId,productname
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -30,7 +38,7 @@
     insert into sale (id, price, quantity, 
       totalPrice, saleDate, productId
       )
-    values (#{id,jdbcType=BIGINT}, #{price,jdbcType=DOUBLE}, #{quantity,jdbcType=INTEGER}, 
+    values (null, #{price,jdbcType=DOUBLE}, #{quantity,jdbcType=INTEGER},
       #{totalprice,jdbcType=DOUBLE}, #{saledate,jdbcType=TIMESTAMP}, #{productid,jdbcType=BIGINT}
       )
   </insert>
@@ -107,9 +115,9 @@
       productId = #{productid,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" resultMap="BaseResult">
     SELECT  <include refid="fullBase_Column_List" />
-     from sale s,product p where s.productId=p.id
+     from sale ,product where sale.productId=product.id
      <if test="condition==1">
        ORDER BY saleDate DESC
      </if>

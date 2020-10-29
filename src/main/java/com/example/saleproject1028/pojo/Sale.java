@@ -3,7 +3,7 @@ package com.example.saleproject1028.pojo;
 import java.util.Date;
 
 public class Sale {
-    private Long id;
+    private Integer id;
 
     private Double price;
 
@@ -17,12 +17,25 @@ public class Sale {
 
     private String productname;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "id=" + id +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", totalprice=" + totalprice +
+                ", saledate=" + saledate +
+                ", productid=" + productid +
+                ", productname='" + productname + '\'' +
+                '}';
     }
 
     public Double getPrice() {
